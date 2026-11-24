@@ -6,6 +6,8 @@ AI 도구를 활용한 개발을 위한 공통 지침과 GitHub 설정 템플릿
 ## 구성
 
 - [AGENTS.md](AGENTS.md): AI 개발 도구가 따를 공통 작업 지침
+- [AI 개발 자동화 지침](docs/ai-automation.md): Issue 기반 개발·리뷰·CI·머지·종료와 장애 복구 요구사항
+- [AI 개발 자동화 체크리스트](docs/ai-automation-checklist.md): 프로젝트별 도입·개선 및 회귀 검증 기준
 - [main.json](.github/rulesets/main.json) / [dev.json](.github/rulesets/dev.json): 브랜치 룰셋
 - [PR 템플릿](.github/PULL_REQUEST_TEMPLATE.md): 변경 내용과 검증 결과를 정리하는 기본 양식
 - [Prettier 설정](templates/prettier/prettier.config.mjs): 프로젝트에서 선택해 사용하는 포맷 설정
@@ -16,6 +18,10 @@ AI 도구를 활용한 개발을 위한 공통 지침과 GitHub 설정 템플릿
 2. README를 프로젝트 소개와 사용법으로 교체합니다.
 3. AGENTS.md에 프로젝트별 지침을 보완합니다.
 4. 브랜치 룰셋을 가져와 적용하고, PR 템플릿을 필요에 맞게 조정합니다.
+
+## AI 개발 자동화 도입
+
+자동화를 도입하거나 개선하는 프로젝트는 위 자동화 지침과 체크리스트를 참고해 기존 구현의 누락 사항을 보완합니다. 공통 엔진 설치나 자동화 도입 자체를 강제하지 않습니다.
 
 ## Prettier 설정 사용
 
