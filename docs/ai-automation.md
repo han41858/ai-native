@@ -44,8 +44,6 @@
 
 대기 상태는 자동화 실패로 처리하지 않습니다. 복구 중인 CI 실패를 최종 실패처럼 표시하지 않으며, 사람 확인이 필요한 상태가 단순 CI 성공 이벤트로 해제되지 않도록 합니다.
 
-근거: [commit-trail #240](https://github.com/han41858/commit-trail/pull/240), [#241](https://github.com/han41858/commit-trail/pull/241), [Videx #374](https://github.com/han41858/videx/pull/374), [#408](https://github.com/han41858/videx/pull/408), [#412](https://github.com/han41858/videx/pull/412).
-
 ## 3. 모델 실행과 탐색
 
 - 개발과 리뷰의 호출 예산을 독립적으로 관리합니다. 호출 횟수·출력 토큰·요청 시간·무응답 시간·전체 작업 시간·전체 복구 비용에 상한을 둡니다. 재진입이나 HEAD 갱신으로 전체 상한이 무제한 초기화되지 않도록 합니다.
@@ -57,8 +55,6 @@
 - HTTP 400 등 요청 오류, 인증·권한 오류, 일시적 제한·서버 오류를 구분합니다. 영구 오류는 무조건 재시도하지 않으며, 응답 유실로 실제 실행 여부가 불확실하면 중복 호출·게시를 방지합니다.
 - 공급자 SDK 또는 자체 어댑터를 사용할 수 있으나 실제 사용하는 버전의 공식 계약과 회귀 테스트를 기준으로 검증합니다.
 
-근거: [Videx #369](https://github.com/han41858/videx/pull/369), [#377](https://github.com/han41858/videx/pull/377), [#384](https://github.com/han41858/videx/pull/384), [#385](https://github.com/han41858/videx/pull/385), [commit-trail #230](https://github.com/han41858/commit-trail/pull/230), [#231](https://github.com/han41858/commit-trail/pull/231), [#251](https://github.com/han41858/commit-trail/pull/251), [Agentopia #62](https://github.com/han41858/agentopia/pull/62), [#107](https://github.com/han41858/agentopia/pull/107).
-
 ## 4. 구조화 결과와 코드 편집
 
 - 개발 결과는 완료, 진행 중(in_progress), 사람 확인 필요(needs_human)를 구별합니다. 미완성 작업은 남은 예산 안에서 같은 대화로 이어가고 부분 수정안을 게시하지 않습니다.
@@ -69,8 +65,6 @@
 - 필요한 관련 테스트·문서·설정 파일을 편집할 수 있도록 범위를 구성합니다. 파일 크기·페이지 조회 한도는 실제 저장소 파일과 잠금 파일을 고려합니다. 워크플로와 자동화 자체 변경은 별도 보안·승인 정책을 적용합니다.
 - 커밋·PR 제목은 프로젝트 규칙에 따라 코드로 검증합니다. 모델 제목이 부적합하면 검증된 Issue 제목을 사용할 수 있으며 둘 다 부적합하면 교정하거나 중단합니다.
 
-근거: [Videx #380](https://github.com/han41858/videx/pull/380), [#386](https://github.com/han41858/videx/pull/386), [#410](https://github.com/han41858/videx/pull/410), [commit-trail #212](https://github.com/han41858/commit-trail/pull/212), [#235](https://github.com/han41858/commit-trail/pull/235), [Agentopia #76](https://github.com/han41858/agentopia/pull/76), [#80](https://github.com/han41858/agentopia/pull/80), [#81](https://github.com/han41858/agentopia/pull/81), [#82](https://github.com/han41858/agentopia/pull/82), [#88](https://github.com/han41858/agentopia/pull/88).
-
 ## 5. 게시 전 검증
 
 - 삭제하지 않은 변경 파일에 프로젝트의 고정된 포매터와 설정을 적용합니다. 포맷만 다른 변경을 모델에 다시 요청하지 않습니다. Rust 등 별도 언어의 포맷 정책도 적용합니다.
@@ -80,8 +74,6 @@
 - 변경 영향에 따라 포맷·타입 검사·단위·통합·브라우저·빌드 검사를 수행합니다. 문서 전용 변경은 관련 검사만 수행할 수 있으나 불확실하거나 혼합된 변경은 보수적으로 검사합니다. 필수 CI 결과 보고와 브랜치 보호는 유지합니다.
 - 화면 변경 시 기존 UI 테스트의 실제 내용을 개발 및 리뷰에서 확인하고 필요한 테스트를 함께 갱신합니다. 테스트를 무력화하거나 실패 조건을 숨기지 않습니다.
 - 편집·의존성·포맷·타입·테스트·빌드의 실패 단계를 구분하고 구체적 진단을 제한된 보완 요청에 전달합니다. 실패한 후보는 게시하지 않습니다.
-
-근거: [commit-trail #212](https://github.com/han41858/commit-trail/pull/212), [#234](https://github.com/han41858/commit-trail/pull/234), [#238](https://github.com/han41858/commit-trail/pull/238), [#242](https://github.com/han41858/commit-trail/pull/242), [#243](https://github.com/han41858/commit-trail/pull/243), [Videx #371](https://github.com/han41858/videx/pull/371), [#372](https://github.com/han41858/videx/pull/372), [#375](https://github.com/han41858/videx/pull/375), [#376](https://github.com/han41858/videx/pull/376), [#382](https://github.com/han41858/videx/pull/382), [Agentopia #99](https://github.com/han41858/agentopia/pull/99), [#100](https://github.com/han41858/agentopia/pull/100).
 
 ## 6. PR, 교차 리뷰 및 CI
 
@@ -94,8 +86,6 @@
 - PR에 AI 리뷰 상태를 별도 체크 또는 동등한 방식으로 표시합니다. 리뷰 성공과 CI 대기·실패를 분리하며 상태 표시 실패가 검증 조건을 완화하지 않도록 합니다.
 - 댓글 게시 또는 후속 처리 실패 시 저장된 동일 HEAD의 검증 결과를 안전하게 재사용할 수 있습니다. 결과를 확인하지 못한 리뷰는 승인으로 간주하지 않습니다.
 
-근거: [commit-trail #229](https://github.com/han41858/commit-trail/pull/229), [#239](https://github.com/han41858/commit-trail/pull/239), [Videx #387](https://github.com/han41858/videx/pull/387), [#402](https://github.com/han41858/videx/pull/402), [Agentopia #63](https://github.com/han41858/agentopia/pull/63), [#90](https://github.com/han41858/agentopia/pull/90), [#91](https://github.com/han41858/agentopia/pull/91), [#99](https://github.com/han41858/agentopia/pull/99).
-
 ## 7. 병렬 개발과 기준 브랜치 변경
 
 - 기준 변경을 일상적인 경쟁 상태로 처리합니다. 게시 전이면 기존 후보를 폐기하고 최신 기준·지침에서 다시 개발합니다(권장 1회).
@@ -105,8 +95,6 @@
 - CI 후속 실행에서도 동일한 복구 경로를 사용하며 예약·횟수를 먼저 기록하여 중복 작업을 방지합니다.
 - 개별 복구 한도 외 전체 작업 시간, 호출·비용·재진입 상한을 유지합니다. 자동 복구 과정에서 사용자 중단과 의존성·승인 조건을 재확인합니다.
 
-근거: [commit-trail #253](https://github.com/han41858/commit-trail/pull/253), [Videx #383](https://github.com/han41858/videx/pull/383), [#403](https://github.com/han41858/videx/pull/403), [#422](https://github.com/han41858/videx/pull/422), [Agentopia #73](https://github.com/han41858/agentopia/pull/73).
-
 ## 8. 머지 및 종료
 
 - 자동 머지는 사용자가 명시적으로 승인한 자동화 정책의 범위에서만 허용합니다. 기본 대상은 개발 브랜치(dev 등)이며 main 승격·릴리스·배포는 별도 정책을 따릅니다.
@@ -114,8 +102,6 @@
 - 단기 작업 브랜치는 squash merge를 기본으로 하며 장기 브랜치 간 머지는 프로젝트 정책에 따릅니다.
 - 머지 후 실제 PR의 대상·머지 커밋을 확인하고 연결 Issue가 completed로 종료됐는지 확인합니다. 종료 요청이 실패하거나 응답이 유실되면 실제 상태를 제한적으로 재조회합니다.
 - 이미 머지됐으면 개발·리뷰·머지를 반복하지 않고 남은 종료 단계만 재개합니다. 잘못된 대상, 종료 사유, 불확실한 결과는 사람 확인으로 남깁니다.
-
-근거: [commit-trail #207](https://github.com/han41858/commit-trail/pull/207), [#251](https://github.com/han41858/commit-trail/pull/251), [Videx #391](https://github.com/han41858/videx/pull/391), [Agentopia #65](https://github.com/han41858/agentopia/pull/65), [#66](https://github.com/han41858/agentopia/pull/66).
 
 ## 9. GitHub Actions와 보안
 
@@ -127,8 +113,6 @@
 - 후속 실행은 관련 브랜치·워크플로·이슈에 한정하고 불필요한 러너 실행을 줄입니다. 이벤트 누락은 실제 상태 대조 및 제한된 재개로 처리합니다.
 - API 쓰기 응답이 실패하거나 유실된 경우 성공·실패를 단정하기 전에 실제 상태를 확인합니다. 불확실한 게시를 무조건 재시도하지 않습니다.
 
-근거: [commit-trail #212](https://github.com/han41858/commit-trail/pull/212), [#214](https://github.com/han41858/commit-trail/pull/214), [#242](https://github.com/han41858/commit-trail/pull/242), [Videx #387](https://github.com/han41858/videx/pull/387), [Agentopia #64](https://github.com/han41858/agentopia/pull/64), [#69](https://github.com/han41858/agentopia/pull/69), [#100](https://github.com/han41858/agentopia/pull/100).
-
 ## 10. 관측성 및 운영 검증
 
 - 상태 기록에는 규격 버전, Issue·PR·실행 식별자, 기준 및 HEAD, 단계, 현재 상태, 구조화된 실패 코드와 구체적인 사유, 시도 횟수·재개 가능 여부를 포함합니다.
@@ -138,8 +122,6 @@
 - 상태를 외부에서 읽는 도구는 신뢰된 봇의 구조화 기록과 실제 GitHub 상태를 구분하여 해석합니다. 일반 댓글의 단어만으로 자동화 단계나 완료를 추정하지 않습니다.
 - 장애 수정 시 해당 장애를 재현하는 회귀 테스트를 추가합니다. 연결 지연과 본문 지연처럼 서로 다른 실패 조건을 분리하여 불안정한 시간 의존 테스트를 피합니다.
 - 모의 API 테스트, 실제 격리 환경 검사, 실제 GitHub Actions·모델 API 종단간 검증을 구별하여 보고합니다. 초기 운영 검증은 작은 승인된 변경으로 진행하며 재개·후속 이벤트·머지·종료를 확인합니다. 실제 운영 검증 없이 성공을 단정하지 않습니다.
-
-근거: [commit-trail #201](https://github.com/han41858/commit-trail/pull/201), [#230](https://github.com/han41858/commit-trail/pull/230), [#234](https://github.com/han41858/commit-trail/pull/234), [#239](https://github.com/han41858/commit-trail/pull/239), [Videx #371](https://github.com/han41858/videx/pull/371), [#377](https://github.com/han41858/videx/pull/377), [#385](https://github.com/han41858/videx/pull/385), [Agentopia #76](https://github.com/han41858/agentopia/pull/76).
 
 ## 11. 지침 갱신 및 프로젝트 적용
 
