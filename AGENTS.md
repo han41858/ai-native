@@ -24,7 +24,7 @@
 
 ## AI 개발 자동화
 
-- AI 개발 자동화를 도입·수정·검토할 때는 [ai-native의 AI 개발 자동화 지침](https://github.com/han41858/ai-native/blob/main/docs/ai-automation.md)과 [체크리스트](https://github.com/han41858/ai-native/blob/main/docs/ai-automation-checklist.md)를 확인합니다.
+- AI 개발 자동화를 도입·수정·검토할 때는 [ai-native의 AI 개발 자동화 지침](docs/ai-automation.md)과 [체크리스트](docs/ai-automation-checklist.md)를 확인합니다.
 - 현재 프로젝트의 구현과 비교해 미충족 항목만 보완하고, 프로젝트 고유 정책과 보호 조건을 유지합니다. 새 장애의 공통 지침 반영이 필요하면 별도 작업으로 제안합니다.
 
 ## 검증과 보고
